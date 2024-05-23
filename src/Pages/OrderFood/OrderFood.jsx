@@ -33,7 +33,7 @@ const OrderFood = () => {
                 subHeading={"Would you like to try a dish?"}
             ></Cover>
 
-            <Tabs className="text-center" selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+            <Tabs className="text-center mt-20" selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                 <TabList>
                     <Tab>SALAD</Tab>
                     <Tab>PIZZA</Tab>

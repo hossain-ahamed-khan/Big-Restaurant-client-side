@@ -39,7 +39,8 @@ const OurMenu = () => {
                     heading={"TODAY'S OFFER"}>
                 </SectionTitle>
                 <MenuCategories
-                    items={offered}>
+                    items={offered}
+                    title={"salad"}>
                 </MenuCategories>
             </div>
 
@@ -51,8 +52,7 @@ const OurMenu = () => {
                 ></Cover>
                 <MenuCategories
                     items={dessert}
-                    title={"desert"}
-                >
+                    title={"dessert"}>
                 </MenuCategories>
             </div>
 
@@ -64,8 +64,7 @@ const OurMenu = () => {
                 ></Cover>
                 <MenuCategories
                     items={pizza}
-                    title={"pizza"}
-                >
+                    title={"pizza"}>
                 </MenuCategories>
             </div>
 
@@ -77,8 +76,7 @@ const OurMenu = () => {
                 ></Cover>
                 <MenuCategories
                     items={salad}
-                    title={"salad"}
-                >
+                    title={"salad"}>
                 </MenuCategories>
             </div>
 
@@ -90,8 +88,7 @@ const OurMenu = () => {
                 ></Cover>
                 <MenuCategories
                     items={soup}
-                    title={"soup"}
-                >
+                    title={"soup"}>
                 </MenuCategories>
             </div>
         </div>
