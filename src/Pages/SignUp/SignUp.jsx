@@ -24,7 +24,7 @@ const SignUp = () => {
                     .then(() => {
                         reset();
                         Swal.fire({
-                            title: "Sign Up Success",
+                            title: "Sign Up Successfully",
                             text: "Successfully sign up to Big Boss",
                             icon: "success"
                         });

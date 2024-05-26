@@ -1,9 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { FaCartPlus } from "react-icons/fa";
+import useAddToCart from "../../hooks/useAddToCart";
 
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext);
+    const [cart] = useAddToCart()
 
     const handleLogOut = () => {
         logOut()
@@ -12,12 +15,21 @@ const Navbar = () => {
     }
 
     const navOptions = <>
-        <li><Link to="/">HOME</Link></li>
-        <li><Link to="/contact-us">CONTACT US</Link></li>
-        <li><Link to="/dashboard">DASHBOARD</Link></li>
-        <li><Link to="/our-menu">OUR MENU</Link></li>
-        <li><Link to="/order-food/salad">ORDER FOOD</Link></li>
-        <li><Link to="/secret">Secret</Link></li>
+        <li><NavLink to="/">HOME</NavLink></li>
+        <li><NavLink to="/contact-us">CONTACT US</NavLink></li>
+        <li><NavLink to="/dashboard">DASHBOARD</NavLink></li>
+        <li><NavLink to="/our-menu">OUR MENU</NavLink></li>
+        <li><NavLink to="/order-food/salad">ORDER FOOD</NavLink></li>
+        <li><NavLink to="/secret">Secret</NavLink></li>
+        {
+            user &&
+            <li className="ml-4">
+                <NavLink to="#">
+                    <FaCartPlus />
+                    <div className="badge badge-secondary ml-1">+{cart.length}</div>
+                </NavLink>
+            </li>
+        }
     </>
     return (
         <div className="navbar fixed z-10 text-slate-100 bg-slate-800 opacity-75">
