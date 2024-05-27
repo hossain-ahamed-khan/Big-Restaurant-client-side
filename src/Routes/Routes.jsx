@@ -4,13 +4,14 @@ import {
 import Main from "../Layouts/Main";
 import Home from "../Pages/Home/Home/Home";
 import ContactUs from "../Pages/ContactUs/ContactUs";
-import Dashboard from "../Pages/Dashboard/Dashboard";
+import Dashboard from "../Layouts/Dashboard";
 import OurMenu from "../Pages/OurMenu/OurMenu";
 import OrderFood from "../Pages/OrderFood/OrderFood";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Secret from "../Pages/Secret/Secret";
+import Cart from "../Pages/Dashboard/Cart";
 
 
 export const router = createBrowserRouter([
@@ -25,10 +26,6 @@ export const router = createBrowserRouter([
             {
                 path: '/contact-us',
                 element: <ContactUs></ContactUs>
-            },
-            {
-                path: '/dashboard',
-                element: <Dashboard></Dashboard>
             },
             {
                 path: '/our-menu',
@@ -50,6 +47,17 @@ export const router = createBrowserRouter([
                 path: '/secret',
                 element: <PrivateRoute><Secret></Secret></PrivateRoute>
             },
+        ]
+    },
+
+    {
+        path: "dashboard",
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            {
+                path: "cart",
+                element: <Cart></Cart>
+            }
         ]
     },
 ]);

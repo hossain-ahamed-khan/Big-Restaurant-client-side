@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 
 const Login = () => {
@@ -33,7 +34,9 @@ const Login = () => {
                 Swal.fire({
                     title: "Success",
                     text: "Logged in successfully",
-                    icon: "success"
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1500
                 });
                 navigate(from, { replace: true });
             })
@@ -84,10 +87,14 @@ const Login = () => {
                                 <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="captcha" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
-                                <button disabled={disabled} type="submit" className="btn btn-primary">Login</button>
+                                <button disabled={disabled} type="submit" className="btn bg-[#D1A054]">Login</button>
                             </div>
                         </form>
-                        <p><small>New Here? <Link to="/signup">Create an account</Link></small></p>
+                        <div className="text-center">
+                            <p><small>New Here? <Link className="text-[#D1A054]" to="/signup">Create an account</Link></small></p>
+                            <p><small>or, login with</small></p>
+                            <SocialLogin></SocialLogin>
+                        </div>
                     </div>
                 </div>
             </div>

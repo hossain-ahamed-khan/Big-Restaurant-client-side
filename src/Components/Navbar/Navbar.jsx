@@ -24,7 +24,7 @@ const Navbar = () => {
         {
             user &&
             <li className="ml-4">
-                <NavLink to="#">
+                <NavLink to="/dashboard/cart">
                     <FaCartPlus />
                     <div className="badge badge-secondary ml-1">+{cart.length}</div>
                 </NavLink>

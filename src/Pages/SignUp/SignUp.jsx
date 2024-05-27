@@ -5,30 +5,43 @@ import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from 'sweetalert2'
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 
 const SignUp = () => {
-
+    const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
 
 
     const onSubmit = data => {
-        console.log(data);
+
         createUser(data.email, data.password)
-            .then(result => {
-                const loggedUser = result.user;
-                console.log(loggedUser);
+            .then(() => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        reset();
-                        Swal.fire({
-                            title: "Sign Up Successfully",
-                            text: "Successfully sign up to Big Boss",
-                            icon: "success"
-                        });
-                        navigate("/");
+                        // send user info to the database 
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email,
+                            photoURL: data.photoURL
+                        }
+                        axiosPublic.post("/user", userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        position: "center",
+                                        title: "User created successfully",
+                                        icon: "success",
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate("/");
+                                }
+                            })
                     })
                     .catch(error => console.log(error))
             })
@@ -89,10 +102,14 @@ const SignUp = () => {
                                 {errors.password?.type === "pattern" && <span className="text-red-600">password should contain at least one uppercase, one lowercase, one digits and one special characters.</span>}
                             </div>
                             <div className="form-control mt-6">
-                                <input type="submit" className="btn btn-primary" value="Sign Up" />
+                                <input type="submit" className="btn bg-[#D1A054]" value="Sign Up" />
                             </div>
                         </form>
-                        <p><small>Already have an account? <Link to="/login">Go to log in</Link></small></p>
+                        <div className="text-center">
+                            <p><small>Already have an account? <Link className="text-[#D1A054]" to="/login">Go to log in</Link></small></p>
+                            <p><small>or, Sign up with</small></p>
+                            <SocialLogin></SocialLogin>
+                        </div>
                     </div>
                 </div>
             </div>
