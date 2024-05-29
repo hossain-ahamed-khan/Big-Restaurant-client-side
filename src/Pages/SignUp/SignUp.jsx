@@ -17,7 +17,6 @@ const SignUp = () => {
 
 
     const onSubmit = data => {
-
         createUser(data.email, data.password)
             .then(() => {
                 updateUserProfile(data.name, data.photoURL)

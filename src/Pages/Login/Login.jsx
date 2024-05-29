@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import loginImg from "../../assets/others/authentication1.png";
-import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+// import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
@@ -9,16 +9,16 @@ import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 
 const Login = () => {
-    const [disabled, setDisabled] = useState(true);
+    // const [disabled, setDisabled] = useState(true);
     const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location.state?.from?.pathname || "/";
 
-    useEffect(() => {
-        loadCaptchaEnginge(6);
-    }, [])
+    // useEffect(() => {
+    //     loadCaptchaEnginge(6);
+    // }, [])
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -42,17 +42,19 @@ const Login = () => {
             })
     }
 
-    const handleValidateCaptcha = (e) => {
-        const user_captcha_value = e.target.value;
 
-        if (validateCaptcha(user_captcha_value) == true) {
-            setDisabled(false);
-        }
+    // const handleValidateCaptcha = (e) => {
+    //     const user_captcha_value = e.target.value;
 
-        else {
-            setDisabled(true);
-        }
-    }
+    //     if (validateCaptcha(user_captcha_value) == true) {
+    //         setDisabled(false);
+    //     }
+
+    //     else {
+    //         setDisabled(true);
+    //     }
+    // }
+
 
     return (
         <>
@@ -80,14 +82,16 @@ const Login = () => {
                                 </label>
                                 <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                             </div>
-                            <div className="form-control">
+
+                            {/* <div className="form-control">
                                 <label className="label">
                                     <LoadCanvasTemplate />
                                 </label>
                                 <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="captcha" className="input input-bordered" required />
-                            </div>
+                            </div> */}
+
                             <div className="form-control mt-6">
-                                <button disabled={disabled} type="submit" className="btn bg-[#D1A054]">Login</button>
+                                <button type="submit" className="btn bg-[#D1A054]">Login</button>
                             </div>
                         </form>
                         <div className="text-center">

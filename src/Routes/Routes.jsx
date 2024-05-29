@@ -10,8 +10,11 @@ import OrderFood from "../Pages/OrderFood/OrderFood";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 import Secret from "../Pages/Secret/Secret";
 import Cart from "../Pages/Dashboard/Cart";
+import AllUsers from "../Pages/Dashboard/AllUsers";
+import AddItem from "../Pages/Dashboard/AddItem";
 
 
 export const router = createBrowserRouter([
@@ -57,7 +60,17 @@ export const router = createBrowserRouter([
             {
                 path: "cart",
                 element: <Cart></Cart>
-            }
+            },
+
+            // admin routs 
+            {
+                path: "all-users",
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+            },
+            {
+                path: "add-items",
+                element: <AdminRoute><AddItem></AddItem></AdminRoute>
+            },
         ]
     },
 ]);
