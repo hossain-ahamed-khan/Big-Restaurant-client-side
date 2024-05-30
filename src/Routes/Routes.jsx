@@ -15,6 +15,8 @@ import Secret from "../Pages/Secret/Secret";
 import Cart from "../Pages/Dashboard/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers";
 import AddItem from "../Pages/Dashboard/AddItem";
+import ManageItems from "../Pages/Dashboard/ManageItems";
+import UpdateItem from "../Pages/Dashboard/UpdateItem";
 
 
 export const router = createBrowserRouter([
@@ -70,6 +72,15 @@ export const router = createBrowserRouter([
             {
                 path: "add-items",
                 element: <AdminRoute><AddItem></AddItem></AdminRoute>
+            },
+            {
+                path: "manage-items",
+                element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
+            },
+            {
+                path: "updateItem/:id",
+                element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/menu/${params.id}`)
             },
         ]
     },
