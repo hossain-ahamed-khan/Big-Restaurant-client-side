@@ -20,7 +20,6 @@ const Dashboard = () => {
     const [cart] = useAddToCart();
 
     const [isAdmin] = useAdmin();
-    console.log(isAdmin)
 
     return (
         <div className="flex">
@@ -30,7 +29,7 @@ const Dashboard = () => {
                     {
                         isAdmin ?
                             <>
-                                <li><NavLink to="/dashboard/admin-home">
+                                <li><NavLink to="/dashboard/adminHome">
                                     <TiHome />
                                     ADMIN HOME
                                 </NavLink></li>
@@ -53,7 +52,7 @@ const Dashboard = () => {
                             </>
                             :
                             <>
-                                <li><NavLink to="/">
+                                <li><NavLink to="/dashboard/userHome">
                                     <TiHome />
                                     USER HOME
                                 </NavLink></li>
@@ -61,8 +60,8 @@ const Dashboard = () => {
                                     <FaCalendarDays />
                                     RESERVATION
                                 </NavLink></li>
-                                <li><NavLink to="/dashboard/payment-history">
-                                    <GiWallet />
+                                <li><NavLink to="/dashboard/paymentHistory">
+                                    <FaCalendarCheck />
                                     PAYMENT HISTORY
                                 </NavLink></li>
                                 <li><NavLink to="/dashboard/cart">
@@ -73,8 +72,8 @@ const Dashboard = () => {
                                     <MdOutlineRateReview />
                                     ADD REVIEW
                                 </NavLink></li>
-                                <li><NavLink to="/dashboard/booking">
-                                    <FaCalendarCheck />
+                                <li><NavLink to="/dashboard/myBooking">
+                                    <GiWallet />
                                     MY BOOKING
                                 </NavLink></li>
                             </>
