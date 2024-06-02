@@ -6,9 +6,11 @@ const Recommends = () => {
     const [foodItems, setFoodItems] = useState([]);
 
     useEffect(() => {
-        fetch('menu.json')
+        fetch('https://bistro-boss-server-umber-two.vercel.app/menu')
             .then(res => res.json())
-            .then(data => setFoodItems(data))
+            .then(data => {
+                setFoodItems(data)
+            })
     }, [])
 
 
